@@ -1,0 +1,139 @@
+/* styles.css */
+
+body {
+    background-color: #212529;
+    font-family: Arial, sans-serif;
+    margin: 100px;
+    padding: 0;
+    color: #fff;
+}
+
+
+
+.book {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.img-container {
+    float: left;
+    margin-right: 20px;
+}
+
+.img {
+    max-width: 100px;
+    height: auto;
+}
+
+.book-details {
+    overflow: hidden;
+    padding-right: 20px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.author {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.review {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.book-container {
+    /* display: inline-flex; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* align-items: flex-start; */
+    align-items: center;
+    margin-bottom: 20px;
+}
+.book-details {
+    margin-left: 20px;
+    flex: 1;
+}
+.book-cover {
+    max-width: 100px;
+    height: auto;
+}
+.btns{
+    display: flex;
+}
+
+.btns button {
+    margin-right: 10px;
+}
+#headerFunc{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.sort{
+    padding-right: 8px;
+    padding-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #45a049;
+    color: white;
+}
+
+.titleBig{
+    text-align: center;
+}
+.footer{
+    position: absolute;
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding-top: 54px;
+}
+
+    
+
+.addFrom form {
+    width: 50%;
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    background-color:darkgrey;
+    border-radius: 10px;
+    text-align: center; /* Center-align the content inside the form */
+}
+
+.addFrom form input{
+    border-radius: 3px;
+    border:none;
+    padding: 6px;
+}
+.addFrom form textarea{
+    border-radius: 5px;
+    border:none;
+}
+
+.addButton{
+    width: 150px;
+}

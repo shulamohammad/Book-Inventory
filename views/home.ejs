@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Books</title>
+    <link rel="stylesheet" href="style.css">
+    <h1 class="titleBig">BOOK Inventory</h1>
+   <div id="headerFunc">
+    <a href="/add-book"><button>Add New Book</button></a>
+    <!-- Inside your EJS template -->
+    <form action="/" method="get" id="sortForm">
+        <label for="sort">Sort by:</label>
+        <select class="sort" name="sort" id="sort">
+            <option value="date">Date</option>
+            <option value="rating">Rating</option>
+        </select>
+        <button type="submit">Sort</button> <!-- Remove the name attribute here -->
+    </form>
+    
+    
+    
+</div>
+ 
+
+    <% books.forEach(book => { %>
+        <hr>
+        <div class="book-container" id="book_<%= book.id %>">
+            <img src="http://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" class="book-cover"> 
+            <div class="book-details book-details<%= book.id %>">
+                <h1 class="title"><%= book.title %></h1>
+                <h3 class="author">Author: <%= book.author %></h3>
+                <% console.log(typeof book.Rating, book.Rating); %>
+                <% console.log(book); %>
+                <% 
+                // Function to format the date string
+                function formatDate(dateString) {
+                    const date = new Date(dateString);
+                    const options = { day: 'numeric', month: 'short', year: 'numeric' };
+                    return date.toLocaleDateString('en-US', options);
+                }
+            %>
+            <small><%= formatDate(book.date_read) %></small>
+                
+                <small>Rating:<%= book.rating %>/10</small>
+                
+                <p><b>Review:</b></p>
+                <p class="review"><%= book.review %></p>
+                <form action="/edit" method="post" class="editReviewForm" style="margin-bottom: 15px; display: none;">
+                    <textarea name="updatedReview" style="width: 100%; margin-right: 20px;"><%= book.review %></textarea>
+                    <!-- Add a hidden input field to send the book ID -->
+                    <input type="hidden" name="updateBookId" value="<%= book.id %>">
+                    <button type="submit">Update</button>
+                </form>
+                
+                <div class="btns">
+                    <form action="/delete" method="post">
+                        <button type="submit" name="deleteBookId" value= "<%= book.id %>">delete</button>
+                      </form>
+                    
+                      <button type="hidden" name="book" value="<%= book.id %>" id="<%= book.id %>" onclick="editFormShow(<%= book.id %>)">Edit</button>
+    
+                </div>
+            </div>
+                </div>
+                
+    <% }); %>
+
+    <script>
+        function editFormShow(id){
+            
+            document.querySelector(`.book-details${id} .review`).style.display = 'none';
+            document.querySelector(`.book-details${id} .editReviewForm`).style.display = 'block';
+
+        }
+
+        document.getElementById('sortForm').addEventListener('submit', function(event) {
+            const sortBy = document.getElementById('sort').value; // Get the selected value
+            this.action = `/?sort=${sortBy}`; // Modify form action based on selected value
+        });
+   
+
+    </script>
+
+
+
+<hr>
+<footer class="footer"> Shula Mohammad © 2024</footer>
+</body>
+</html>

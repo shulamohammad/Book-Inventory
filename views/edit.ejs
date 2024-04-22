@@ -1,0 +1,32 @@
+<div id="books">
+    <% if (locals.books) { %> 
+    <% for (let i = 0; i <locals.books.length;i++){ %>
+    <div id="abook">
+       <img src="<%= books[i].cover %>" loading="lazy" alt="<%= books[i].title  %> Cover" />
+        <div id = "bookdetails">
+        <h2><%= books[i].title %> by <%= books[i].author %></h2>
+        <small>
+          ISBN: <%= books[i].isbn %>
+          Release Date: <%= books[i].publication_date %>.
+          My rating: <%= books[i].rating %>/10
+        </small>
+        <p><%= books[i].review %></p>
+      </div>
+        <div id = "book-func">
+        <form action="/edit" method="post">
+            <button type="submit" name="book" value="<%= books[i].id %>" id="<%= books[i].id %>">Edit</button>
+        </form>
+        <form action="/delete" method="post">
+          <button type="submit" name="book" value="<%= books[i].id %>" id="<%= books[i].id %>">Delete</button>
+      </form>
+      </div>
+    </div>
+    <% } %> <% }else{ %>
+    <h2>You haven't read any books yet.</h2>
+    <% } %>
+  </div>
+   <script>
+  document.getElementById("dropdown").addEventListener("change", function () {
+    this.form.submit();
+  });
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="titleBig">Add New Book</h1>
+    <div class="addFrom">
+        <% if (message) { %>
+            <p><%= message %></p>
+        <% } %>
+        <form  action="/add-book" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required><br><br>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required><br><br>
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" pattern="\d{3}-\d{10}" title="Please enter a valid ISBN (e.g., 978-3-16-148410-0)" required><br><br>
+            <label for="Rating"> Rate out of 10:</label><br><br>
+            <input type="number" id="Rating" name="Rating" min="1" max="10"/><br><br>
+            <label>
+                Date Read:
+                <input type="date" name="date_read" required pattern="\d{4}-\d{2}-\d{2}" /><br><br>
+            </label>
+            <label for="review">Write your review:</label><br><br>
+            <textarea  name="review" rows="4" cols="50" placeholder="Write your review..."></textarea><br><br>
+            <button class="addButton" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
